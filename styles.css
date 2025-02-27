@@ -1,0 +1,197 @@
+/* All of CSS attributes are filled with help by Tailwind CSS */
+
+* {
+  font-family: "Poppins", serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  padding: 24px 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background-image: none;
+  background-color: #0000;
+  text-transform: none;
+  cursor: pointer;
+}
+
+#judul {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+#silakan {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+#load-more {
+  border: 1px solid black;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.center-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.max-width-controller {
+  /* md */
+  @media (min-width: 768px) {
+    max-width: 700px;
+  }
+
+  /* lg */
+  @media (min-width: 1024px) {
+    max-width: 960px;
+  }
+
+  /* xl */
+  @media (min-width: 1280px) {
+    max-width: 1120px;
+  }
+
+  /* 2xl */
+  @media (min-width: 1536px) {
+    max-width: 1280px;
+  }
+}
+
+.grid {
+  margin-top: 24px;
+  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+
+  /* lg */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* xl */
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.end-text {
+  width: 100%;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.product-container {
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.product-image-container {
+  overflow: hidden;
+  border-bottom: 1px solid black;
+}
+
+.product-summary {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-summary .title {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.product-summary .brand {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.product-discount {
+  font-size: 10px;
+}
+
+.product-discount .discount-label {
+  font-size: 8px;
+  background-color: rgb(203 213 225 / 1);
+  padding: 2px 4px;
+  margin-left: 4px;
+}
+
+.product-price {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.product-review {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.thumbnail {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.strikethrough {
+  text-decoration-line: line-through;
+}
+
+.star {
+  width: 1em;
+  height: 1em;
+}
+
+.icon {
+  flex-shrink: 0;
+}

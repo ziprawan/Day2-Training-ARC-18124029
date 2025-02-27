@@ -1,0 +1,34 @@
+<!-- Most simple website yet -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Online</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/webp" href="./images/favicon.webp" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="judul" class="text-center">Selamat Datang di Toko Online!</h1>
+      <h3 id="silakan" class="text-center">Silakan pilih barang di bawah ini!</h3>
+    </div>
+    <div class="center-div">
+      <div class="max-width-controller">
+        <div id="product-list" class="grid"></div>
+        <div id="loading" class="end-text">Loading products...</div>
+        <div id="end" class="end-text" style="display: none">Thats all from us...</div>
+        <button id="load-more" onclick="fetchProducts()">Fetch more products...</button>
+      </div>
+    </div>
+    <script src="./utils.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
