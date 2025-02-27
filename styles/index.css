@@ -136,10 +136,13 @@ button {
 }
 
 .product-discount .discount-label {
-  font-size: 8px;
+  font-size: 10px;
   background-color: rgb(203 213 225 / 1);
-  padding: 2px 4px;
-  margin-left: 4px;
+  padding: 1px 4px;
+  margin-right: 4px;
+  background-color: rgb(252 165 165 / 1);
+  color: rgb(239 68 68 / 1);
+  border-radius: 3px;
 }
 
 .product-price {

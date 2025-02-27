@@ -47,15 +47,15 @@ function appendProduct(product) {
       ]),
       createElement("div", {}, [
         createElement("p", { class: "product-discount" }, [
+          createElement("span", { class: "discount-label semibold" }, [`-${discount}%`]),
           createElement("span", { class: "strikethrough" }, [formatCurrency(actualPrice)]),
-          createElement("span", { class: "discount-label" }, [`-${discount}%`]),
         ]),
         createElement("p", { class: "product-price semibold" }, [formatCurrency(afterDiscount)]),
       ]),
       createElement("p", { class: "product-review truncate" }, [
         createElement("span", { "data-lucide": "star", fill: "#ffc400", stroke: "#ffc400", class: "star icon" }),
         rating,
-        "-",
+        " - ",
         availabilityStatus,
       ]),
     ]),
