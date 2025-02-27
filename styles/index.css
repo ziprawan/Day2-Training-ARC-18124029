@@ -34,16 +34,6 @@ button {
   font-weight: 400;
 }
 
-#load-more {
-  border: 1px solid black;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  margin-top: 1em;
-  width: 100%;
-  text-align: center;
-  border-radius: 6px;
-}
-
 .header {
   display: flex;
   flex-direction: column;
@@ -98,9 +88,21 @@ button {
 }
 
 .end-text {
+  transition-property: all;
+  transition-duration: 150ms;
+  border: 1px solid black;
+  padding: 8px 0px;
+  margin-top: 1em;
   width: 100%;
   text-align: center;
-  padding-top: 6px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.end-text:hover {
+  background-color: black;
+  color: white;
 }
 
 .product-container {
