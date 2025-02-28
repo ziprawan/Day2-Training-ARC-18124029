@@ -1,0 +1,20 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    color: rgb(255 255 255 / 1) /* #ffffff */;
+    background-color: #11224a;
+  }
+
+  .overlay {
+    background-color: transparent;
+  }
+
+  .popup {
+    background-color: #0f172a;
+  }
+
+  .product-container,
+  .product-image-container,
+  .popup-image-container {
+    border-color: white;
+  }
+}
