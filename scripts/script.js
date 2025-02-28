@@ -97,6 +97,11 @@ function openProduct(event) {
 
       document.getElementById("wait").style.display = "none";
       lucide.createIcons();
+    })
+    .catch((err) => {
+      document.getElementById("wait").style.display = "none";
+      lucide.createIcons();
+      console.error(err);
     });
 }
 
