@@ -72,13 +72,21 @@ function openProduct(event) {
    */
   const target = event.target.closest(".product-container");
 
+  const rect = event.target.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
   const id = target.getAttribute("product_id");
 
   if (!id) {
     throw new Error(`Unable to get product id`);
   }
 
-  document.getElementById("wait").style.display = "flex";
+  const waitElm = document.getElementById("wait");
+  // const popupElm = document.getElementById("wait-popup");
+
+  // popupElm.classList.add("show");
+  waitElm.classList.add("show");
 
   fetch(`https://dummyjson.com/products/${id}`)
     .then((resp) => {
@@ -95,11 +103,15 @@ function openProduct(event) {
         utils.showProductInfo(json);
       }
 
-      document.getElementById("wait").style.display = "none";
+      // document.getElementById("wait").style.display = "none";
+      waitElm.classList.remove("show");
+      // popupElm.classList.remove("show");
       lucide.createIcons();
     })
     .catch((err) => {
-      document.getElementById("wait").style.display = "none";
+      waitElm.classList.remove("show");
+      // popupElm.classList.remove("show");
+      // document.getElementById("wait").style.display = "none";
       lucide.createIcons();
       console.error(err);
     });

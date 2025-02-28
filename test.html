@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Animation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Overlay (Hidden initially) */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: center;
+        transition: transform 0.3s ease-out, opacity 0.2s ease-out;
+      }
+
+      /* Popup Box */
+      .popup {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 300px;
+      }
+
+      /* Close Button */
+      .close-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+
+      /* Show animation */
+      .overlay.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="openBtn">Show Popup</button>
+
+    <div class="overlay" id="popupOverlay" onclick="hidePopup()">
+      <div class="popup" onclick="event.stopPropagation()">
+        <h2>Popup Title</h2>
+        <p>This popup expands from the button.</p>
+        <button class="close-btn" onclick="hidePopup()">Close</button>
+      </div>
+    </div>
+
+    <script>
+      const popupOverlay = document.getElementById("popupOverlay");
+      const openBtn = document.getElementById("openBtn");
+
+      function showPopup(event) {
+        // Get button position
+        const rect = openBtn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Set transform-origin to make animation start from button position
+        popupOverlay.style.transformOrigin = `${centerX}px ${centerY}px`;
+        popupOverlay.classList.add("show");
+      }
+
+      function hidePopup() {
+        popupOverlay.classList.remove("show");
+      }
+
+      openBtn.addEventListener("click", showPopup);
+    </script>
+  </body>
+</html>
