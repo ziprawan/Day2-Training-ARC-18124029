@@ -212,7 +212,7 @@ function showProductInfo(product) {
                 {
                   name: "div",
                   attrs: { class: "popup-brand semibold xl" },
-                  childs: [{ name: "span", attrs: { "data-lucide": "store" } }, brand],
+                  childs: [{ name: "span", attrs: { "data-lucide": "store" } }, brand ?? "No brand."],
                 },
                 {
                   name: "div",
