@@ -9,6 +9,10 @@
   }
 
   .popup {
+    border: 1px solid #adadad;
+  }
+
+  .popup {
     background-color: #0f172a;
   }
 
