@@ -135,6 +135,7 @@ hr {
 .product-image-container {
   overflow: hidden;
   border-bottom: 1px solid black;
+  aspect-ratio: 1/1;
 }
 
 .product-summary {
