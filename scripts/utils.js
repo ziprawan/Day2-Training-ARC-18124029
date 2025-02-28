@@ -43,6 +43,7 @@ function createElement(tagName, attrs, childs = undefined) {
  * Processes an ElementTree structure.
  *
  * @param {(ElementTree|string|number)[]} elements - The root element of the tree.
+ * @returns {HTMLElement[]}
  */
 function createTreeElement(elements) {
   if (!Array.isArray(elements)) {
@@ -56,65 +57,71 @@ function createTreeElement(elements) {
   );
 }
 
-function appendProduct(product) {
-  const { thumbnail, title, brand, price, discountPercentage, rating, availabilityStatus } = product;
-  const actualPrice = price * USD_TO_IDR;
-  const afterDiscount = (actualPrice * (100 - discountPercentage)) / 100;
-  const discount = Math.ceil(discountPercentage);
+function appendProduct(products) {
+  const created = createTreeElement(
+    products.map((product) => {
+      const { thumbnail, title, brand, price, discountPercentage, rating, availabilityStatus } = product;
+      const actualPrice = price * USD_TO_IDR;
+      const afterDiscount = (actualPrice * (100 - discountPercentage)) / 100;
+      const discount = Math.ceil(discountPercentage);
 
-  const created = createTreeElement([
-    {
-      name: "div",
-      attrs: { class: "product-container" },
-      childs: [
-        {
-          name: "div",
-          attrs: { class: "product-image-container" },
-          childs: [{ name: "img", attrs: { class: "thumbnail", src: thumbnail } }],
-        },
-        {
-          name: "div",
-          attrs: { class: "product-summary" },
-          childs: [
-            {
-              name: "div",
-              attrs: { class: "product-face" },
-              childs: [
-                { name: "p", attrs: { class: "title truncate semibold" }, childs: [title] },
-                { name: "p", attrs: { class: "brand truncate" }, childs: [brand ?? "No brand."] },
-              ],
-            },
-            {
-              name: "div",
-              childs: [
-                {
-                  name: "p",
-                  attrs: { class: "product-discount" },
-                  childs: [
-                    { name: "span", attrs: { class: "discount-label semibold" }, childs: [`-${discount}%`] },
-                    { name: "span", attrs: { class: "strikethrough" }, childs: [formatCurrency(actualPrice)] },
-                  ],
-                },
-                { name: "p", attrs: { class: "product-price semibold" }, childs: [formatCurrency(afterDiscount)] },
-              ],
-            },
-            {
-              name: "p",
-              attrs: { class: "product-review truncate" },
-              childs: [
-                { name: "span", attrs: { "data-lucide": "star", fill: STAR_COLOR, stroke: STAR_COLOR, class: "star icon" } },
-                rating,
-                " - ",
-                availabilityStatus,
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+      return {
+        name: "div",
+        attrs: { class: "product-container" },
+        childs: [
+          {
+            name: "div",
+            attrs: { class: "product-image-container" },
+            childs: [{ name: "img", attrs: { class: "thumbnail", src: thumbnail } }],
+          },
+          {
+            name: "div",
+            attrs: { class: "product-summary" },
+            childs: [
+              {
+                name: "div",
+                attrs: { class: "product-face" },
+                childs: [
+                  { name: "p", attrs: { class: "title truncate semibold" }, childs: [title] },
+                  { name: "p", attrs: { class: "brand truncate" }, childs: [brand ?? "No brand."] },
+                ],
+              },
+              {
+                name: "div",
+                childs: [
+                  {
+                    name: "p",
+                    attrs: { class: "product-discount" },
+                    childs: [
+                      { name: "span", attrs: { class: "discount-label semibold" }, childs: [`-${discount}%`] },
+                      { name: "span", attrs: { class: "strikethrough" }, childs: [formatCurrency(actualPrice)] },
+                    ],
+                  },
+                  { name: "p", attrs: { class: "product-price semibold" }, childs: [formatCurrency(afterDiscount)] },
+                ],
+              },
+              {
+                name: "p",
+                attrs: { class: "product-review truncate" },
+                childs: [
+                  {
+                    name: "span",
+                    attrs: { "data-lucide": "star", fill: STAR_COLOR, stroke: STAR_COLOR, class: "star icon" },
+                  },
+                  rating,
+                  " - ",
+                  availabilityStatus,
+                ],
+              },
+            ],
+          },
+        ],
+      };
+    })
+  );
 
-  document.getElementById("product-list")?.append(created[0]);
+  const productListElement = document.getElementById("product-list");
+  created.forEach((elem) => productListElement.append(elem));
 }
 
 utils = {

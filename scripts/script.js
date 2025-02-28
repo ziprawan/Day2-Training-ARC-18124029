@@ -51,7 +51,7 @@ function fetchProducts() {
           endOfProductElement.style.display = "block";
         }
 
-        json.products.forEach((product) => utils.appendProduct(product));
+        utils.appendProduct(json.products);
         lucide.createIcons();
       }
     })
