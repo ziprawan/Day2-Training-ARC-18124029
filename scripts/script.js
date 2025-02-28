@@ -52,6 +52,7 @@ function fetchProducts() {
         }
 
         utils.appendProduct(json.products);
+
         lucide.createIcons();
       }
     })
@@ -62,6 +63,40 @@ function fetchProducts() {
         console.error(`Unknown error. Maybe this was your internet connection`);
         console.error(err);
       }
+    });
+}
+
+function openProduct(event) {
+  /**
+   * @type {HTMLDivElement}
+   */
+  const target = event.target.closest(".product-container");
+
+  const id = target.getAttribute("product_id");
+
+  if (!id) {
+    throw new Error(`Unable to get product id`);
+  }
+
+  document.getElementById("wait").style.display = "flex";
+
+  fetch(`https://dummyjson.com/products/${id}`)
+    .then((resp) => {
+      if (resp.status !== 200) {
+        return null;
+      } else {
+        return resp.json();
+      }
+    })
+    .then((json) => {
+      if (!json) {
+        console.error("Unexpected response status!");
+      } else {
+        utils.showProductInfo(json);
+      }
+
+      document.getElementById("wait").style.display = "none";
+      lucide.createIcons();
     });
 }
 

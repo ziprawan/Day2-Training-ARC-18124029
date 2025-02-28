@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toko Online</title>
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/overlay.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +28,9 @@
         <div id="end" class="end-text semibold" style="display: none">Thats all from us...</div>
         <button id="load-more" class="end-text semibold" onclick="fetchProducts()">Fetch more products...</button>
       </div>
+    </div>
+    <div id="wait" class="overlay" style="display: none">
+      <div class="popup">Please wait...</div>
     </div>
     <script src="./scripts/utils.js"></script>
     <script src="./scripts/script.js"></script>
