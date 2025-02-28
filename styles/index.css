@@ -4,6 +4,10 @@
   font-family: "Poppins", serif;
   margin: 0px;
   padding: 0px;
+  border-color: #e5e7eb;
+  border-style: solid;
+  border-width: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -26,6 +30,12 @@ button {
   background-color: #0000;
   text-transform: none;
   cursor: pointer;
+}
+
+hr {
+  height: 0;
+  border-top-width: 1px;
+  color: inherit;
 }
 
 #judul {
